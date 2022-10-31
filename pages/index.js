@@ -2,6 +2,8 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { Button, LinearProgress, Typography } from "@mui/material";
 import Appbar from "../componets/Appbar/Appbar";
+import CustomTabs from "../componets/CustomTabs/CustomTabs";
+import Listitem from "../componets/Listitem/Listitem";
 
 export default function Home() {
   return (
@@ -15,7 +17,9 @@ export default function Home() {
         <Appbar />
         <div className={styles.main}>
           <div className={styles.centerBox}>
-            <div className={styles.centerBoxItems}></div>
+            <div className={styles.centerBoxItems}>
+              <CustomTabs />
+            </div>
             <div className={styles.centerBoxItems}>
               <Button
                 variant="contained"
@@ -28,7 +32,7 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.taskItem}>
-        <Typography>list</Typography>
+        <Listitem />
       </div>
     </>
   );
