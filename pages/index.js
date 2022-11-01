@@ -1,12 +1,12 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Button, LinearProgress, Typography } from "@mui/material";
+import { Box, Button, LinearProgress, Typography } from "@mui/material";
 import Appbar from "../componets/Appbar/Appbar";
 import CustomTabs from "../componets/CustomTabs/CustomTabs";
 import Listitem from "../componets/Listitem/Listitem";
-//import Timer from "../componets/Timer/Timer";
 import Timer from "../componets/Timer/Timer";
 import { useEffect, useRef, useState } from "react";
+import Alarm from "../componets/Alarm/Alarm";
 
 export default function Home() {
   const [pomodoro, setPomodoro] = useState(25);
@@ -17,12 +17,37 @@ export default function Home() {
   const [consumedSecond, setConsumedSecond] = useState(0);
   const [ticking, setTicking] = useState(false);
   const [isTimeUp, setIsTimeUp] = useState(false);
-  const [openSetting, setOpenSetting] = useState(false);
+  const [openSetting, setOpenSetting] = useState(true);
 
   const alarmRef = useRef();
   const pomodoroRef = useRef();
   const shortBreakRef = useRef();
   const longBreakRef = useRef();
+  console.log(pomodoroRef);
+
+  const LinearProgressWithLabel = (props) => {
+    return (
+      <Box display="flex" alignItems="center" pb={3}>
+        <Box width="100%" mr={3}>
+          <LinearProgress
+            sx={{
+              backgroundColor: "rgba(0, 0, 0, 0.1)",
+              "& .MuiLinearProgress-bar": {
+                backgroundColor: "white",
+              },
+            }}
+            variant="determinate"
+            {...props}
+          />
+        </Box>
+        <Box minWidth={35}>
+          <Typography variant="body2">{`${Math.round(
+            props.value
+          )}%`}</Typography>
+        </Box>
+      </Box>
+    );
+  };
 
   const updateTimeDefaultValue = () => {
     setPomodoro(pomodoroRef.current.value);
@@ -33,7 +58,7 @@ export default function Home() {
     setConsumedSecond(0);
   };
 
-  const switchStage = (index) => {
+  const switchTab = (index) => {
     const isYes =
       consumedSecond && stage !== index
         ? confirm("Are you sure you want to switch?")
@@ -96,7 +121,7 @@ export default function Home() {
 
   const startTimer = () => {
     setIsTimeUp(false);
-    //muteAlarm();
+    muteAlarm();
     setTicking((ticking) => !ticking);
   };
 
@@ -125,9 +150,10 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Appbar />
+        <LinearProgressWithLabel value={consumedSecond} />
         <Timer
           stage={stage}
-          switchStage={switchStage}
+          switchTab={switchTab}
           getTickingTime={getTickingTime}
           seconds={seconds}
           ticking={ticking}
@@ -136,6 +162,7 @@ export default function Home() {
           isTimeUp={isTimeUp}
           reset={reset}
         />
+        <Alarm ref={alarmRef} />
       </div>
       <div className={styles.taskItem}>
         <Listitem />

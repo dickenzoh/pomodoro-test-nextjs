@@ -77,18 +77,20 @@ const Listitem = () => {
           color: "#fff",
         }}
       >
-        <Box
-          sx={{
-            margin: "0px 8px",
-            display: "flex",
-            justifyContent: "space-around",
-            color: "rgba(255, 255, 255, 0.7)",
-          }}
-        >
-          <Typography> Est: 2</Typography>
-          <Typography> Act: 0</Typography>
-          <Typography> Finish at 14:14</Typography>
-        </Box>
+        {tasks?.map((task, index) => (
+          <Box
+            sx={{
+              margin: "0px 8px",
+              display: "flex",
+              justifyContent: "space-around",
+              color: "rgba(255, 255, 255, 0.7)",
+            }}
+          >
+            <Typography> Est: {task.est}</Typography>
+            <Typography> Act: {task.act ? task.act : 0}</Typography>
+            <Typography> Finish at 14:14</Typography>
+          </Box>
+        ))}
       </Box>
     </>
   );

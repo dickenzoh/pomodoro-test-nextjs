@@ -1,10 +1,10 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
-//import { FiBellOff } from "react-icons/fi";
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 
-export default function Timerd({
+export default function Timer({
   stage,
-  switchStage,
+  switchTab,
   getTickingTime,
   seconds,
   ticking,
@@ -52,7 +52,7 @@ export default function Timerd({
                 bgcolor: index === stage ? "rgba(0, 0, 0, 0.15)" : "",
               }}
               key={index}
-              onClick={() => switchStage(index)}
+              onClick={() => switchTab(index)}
             >
               {option}
             </Box>
@@ -82,10 +82,10 @@ export default function Timerd({
       >
         <Box
           sx={{
-            padding: "0 0.75rem",
+            padding: " 0.75rem",
             boxShadow: "rgb(235 235 235) 0 0.375rem 0",
             fontSize: "1.375rem",
-            height: "3.4375rem",
+            height: "3rem",
             fontWeight: 600,
             minWidth: "12.5rem",
             backgroundColor: "white",
@@ -105,24 +105,37 @@ export default function Timerd({
           </Typography>
         </Box>
         {isTimeUp && (
-          <FiBellOff
-            className="text-3xl text-white cursor-pointer"
-            onClick={muteAlarm}
-          />
+          <Box sx={{ flexDirection: "flex-end" }} onClick={muteAlarm}>
+            <NotificationsActiveIcon />
+          </Box>
         )}
       </Box>
-      {ticking && (
-        <Button
-          sx={{
-            textTransform: "uppercase",
-            color: "white",
-            mt: 5,
-          }}
+      {/* {ticking && (
+        <Box
           onClick={reset}
+          sx={{
+            padding: " 0.75rem",
+            boxShadow: "rgb(235 235 235) 0 0.375rem 0",
+            fontSize: "1.375rem",
+            height: "3rem",
+            fontWeight: 600,
+            minWidth: "12.5rem",
+            backgroundColor: "white",
+            textTransform: "uppercase",
+            transition: "color 0.5s ease-in-out 0s",
+            cursor: "pointer",
+          }}
         >
-          Reset
-        </Button>
-      )}
+          <Typography
+            color="rgb(202, 86, 82)"
+            fontSize="22px"
+            fontWeight="bold"
+            textAlign="center"
+          >
+            Reset
+          </Typography>
+        </Box>
+      )} */}
     </Box>
   );
 }

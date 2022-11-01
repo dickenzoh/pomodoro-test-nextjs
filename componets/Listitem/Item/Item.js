@@ -48,7 +48,9 @@ const Item = (props) => {
               alignItems: "center",
             }}
           >
-            <Typography variant="h6">{`${data?.act}/${data?.est}`}</Typography>
+            <Typography variant="h6">{`${data.act ? data.act : 0}/${
+              data?.est
+            }`}</Typography>
             <MoreVertOutlinedIcon />
           </Box>
         </Itm>

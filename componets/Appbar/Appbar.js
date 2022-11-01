@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useRef } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -69,18 +69,20 @@ const Appbar = () => {
           Profile
         </Button>
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}>subscription</MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <ListItemIcon>
-          <LogoutOutlinedIcon fontSize="small" />
-        </ListItemIcon>
-        <ListItemText>Logout</ListItemText>
+        <Button startIcon={<PersonIcon />} sx={{ color: "#000" }}>
+          Subscription
+        </Button>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <ListItemIcon>
-          <DeleteIcon fontSize="small" />
-        </ListItemIcon>
-        <ListItemText>Delete account</ListItemText>
+        <Button startIcon={<LogoutOutlinedIcon />} sx={{ color: "#000" }}>
+          Logout
+        </Button>
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Button startIcon={<DeleteIcon />} sx={{ color: "#000" }}>
+          Delete account
+        </Button>
       </MenuItem>
     </Menu>
   );
@@ -139,7 +141,7 @@ const Appbar = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="transparent">
+      <AppBar elevation={0} position="static" color="transparent">
         <Toolbar>
           <IconButton
             size="large"
