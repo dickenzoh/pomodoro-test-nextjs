@@ -52,6 +52,36 @@ export default function CustomTabs() {
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
+          sx={{
+            "& button": {
+              border: "none",
+              color: "white",
+              margin: "0px",
+              borderRadius: "4px",
+              fontFamily: "ArialRounded",
+              fontSize: "16px",
+              padding: "2px 12px",
+              height: "28px",
+              cursor: "pointer",
+              background: "none",
+              boxShadow: "none",
+              fontWeight: 300,
+            },
+            "& button:hover": {
+              background: "none rgba(0, 0, 0, 0.15)",
+            },
+            "& button:active": {
+              background: "none rgba(0, 0, 0, 0.15)",
+            },
+            "& button.Mui-selected": {
+              color: "#fff",
+              background: "none rgba(0, 0, 0, 0.15)",
+              borderBottom: "#fff",
+            },
+            "& span.MuiTabs-indicator": {
+              backgroundColor: "transparent",
+            },
+          }}
         >
           <Tab label="Pomodoro" {...a11yProps(0)} />
           <Tab label="Short Break" {...a11yProps(1)} />

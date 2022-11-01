@@ -3,33 +3,13 @@ import React from "react";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Item from "./Item/Item";
+import AddEditModal from "../Modals/AddEditModal/AddEditModal";
+import { useDispatch, useSelector } from "react-redux";
 
 const Listitem = () => {
-  const tasks = [
-    {
-      id: 0,
-      act: 2,
-      est: 4,
-      title: "take a walk",
-      note: "wonderful",
-      completed: false,
-    },
-    {
-      act: 2,
-      est: 1,
-      title: "fix the bug",
-      note: "wonderful",
-      completed: false,
-    },
-    {
-      id: 3,
-      act: 0,
-      est: 2,
-      title: "feed the dog",
-      note: "wonderful",
-      completed: false,
-    },
-  ];
+  const dispatch = useDispatch();
+  const tasks = useSelector((state) => state.tasks.data);
+  console.log(tasks);
   const Display = () => {
     //const { est, name } = props;
     return (
@@ -82,12 +62,7 @@ const Listitem = () => {
           color: "#fff",
         }}
       >
-        <Button
-          startIcon={<AddCircleIcon />}
-          sx={{ color: "white", borderColor: "white" }}
-        >
-          Add Task
-        </Button>
+        <AddEditModal />
       </Box>
       <Box
         sx={{

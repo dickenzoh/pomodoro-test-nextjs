@@ -20,6 +20,8 @@ import { Button, ListItemIcon, ListItemText } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import DeleteIcon from "@mui/icons-material/Delete";
+import ReportModal from "../Modals/ReportModal/ReportModal";
+import SettingsModal from "../Modals/SettingModal/SettingsModal";
 
 const Appbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -157,7 +159,8 @@ const Appbar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
-            Report settings
+            <ReportModal />
+            <SettingsModal />
             <IconButton
               size="large"
               edge="end"
